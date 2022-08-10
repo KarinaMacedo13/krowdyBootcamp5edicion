@@ -15,7 +15,6 @@ function getToken(tokenKey){
 async function getContacInfo(){
   try {
     const token = getToken('JSESSIONID')
-    
     const [contactInfoName] = $(profileSelectors.contactInfo).href.match(/in\/.+\/o/g) ?? []
     const contactInfoURL = `https://www.linkedin.com/voyager/api/identity/profiles${contactInfoName.slice(2,-2)}/profileContactInfo`
 
@@ -25,7 +24,6 @@ async function getContacInfo(){
       'csrf-token': token,
       }
     })
-    
     return data
   } catch (error) {
     console.log("🚀 ~ file: scrapper.js ~ line 30 ~ getContacInfo ~ error", error)  
